@@ -10,6 +10,8 @@ exports.initiatePaytmTransaction = async (req, res) => {
     // Here OrderId the ObjectId of the database
     const { orderId, redirectUrl } = req.query;
 
+    console.log(redirectUrl);
+
     const cursor = Order.findById(orderId).exec();
     const order = await cursor.then(data => (data));
 

@@ -10,7 +10,7 @@ const client = require('twilio')(accountSid, authToken);
 const sendVerifcationCode = async (randomCode, customerPhone) => {
     return await (
         client.messages.create({
-            body: `Your JustPantry verification code is: ${randomCode}`,
+            body: `Your verification code is: ${randomCode}`,
             from: process.env.TWILIO_NUMBER,
             to: customerPhone
         })
