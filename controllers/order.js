@@ -3,13 +3,9 @@ const { createInvoice } = require("../pdfkit/createInvoice");
 
 //create order
 exports.createOrder = (req, res) => {
-    const time = new Date();
-    const orderId = "ODI" + time.getDate() + time.getMonth() == 0 ? time.getMonth() + "0" : time.getMonth() + time.getFullYear();
-
     req.body.order.user = req.profile._id;
-    req.body.order.orderId = orderId;
-
     const order = new Order(req.body.order);
+    
     order.save((err, order) => {
         if (err) {
             return res.status(400).json({ error: "Falied to create the order" });
