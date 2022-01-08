@@ -3,9 +3,9 @@ const { createInvoice } = require("../pdfkit/createInvoice");
 
 //create order
 exports.createOrder = (req, res) => {
-    const { firstname, lastname } = req.profile;
     const time = new Date().getTime().toString();
-    const orderId = "OD" + firstname[0].toUpperCase() + lastname[lastname.length - 1].toUpperCase() + time.slice(7, time.length);
+    const orderId = "ODI" + time.getDate() + time.getMonth() == 0 ? time.getMonth() + "0" : time.getMonth() + time.getFullYear();
+
     req.body.order.user = req.profile._id;
     req.body.order.orderId = orderId;
 
